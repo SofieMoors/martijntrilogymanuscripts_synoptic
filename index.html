@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Martijn Trilogy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Alegreya', serif;
+        }
+        
+        .navbar {
+            background: firebrick;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-btn {
+            color: white;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-family: 'Alegreya', serif;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .nav-btn.active {
+            background: rgba(255,255,255,0.4);
+            font-weight: bold;
+        }
+        
+        iframe {
+            width: 100%;
+            height: calc(100vh - 60px);
+            border: none;
+            display: none;
+        }
+        
+        iframe.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <button class="nav-btn active" onclick="showPage('synoptic')">Synoptic Table</button>
+        <button class="nav-btn" onclick="showPage('pixelplot')">Pixelplot</button>
+    </div>
+    
+    <iframe id="synoptic" class="active" src="synoptic_table.html"></iframe>
+    <iframe id="pixelplot" src="interactive_pixelplot.html"></iframe>
+    
+    <script>
+        function showPage(page) {
+            document.querySelectorAll('iframe').forEach(f => f.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(page).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
